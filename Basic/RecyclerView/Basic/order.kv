@@ -1,0 +1,45 @@
+<PrimaryButton@Button>
+    font_size: 32
+    color: 155, 32, 255, 1
+    size: 150, 50
+    background_normal: ''
+    background_down: 'black.jpg'
+    background_color: 0.88, 0.88, 0.88, 1
+
+<MainScreen>:
+    orientation: 'vertical'
+    order_name_input: order_name
+    order_amount_input: order_amount
+    order_list_view: order_list
+
+    BoxLayout:
+        spacing: 8
+        padding: 24, 8, 24, 8
+        size_hint: 1, .09
+        orientation: 'horizontal'
+
+        TextInput:
+            id: order_name
+            hint_text: 'Order'
+        TextInput:
+            id: order_amount
+            hint_text: 'Amount'
+        Button:
+            text: 'Add'
+            on_release: root.add_order()
+
+
+    OrderList:
+        id: order_list
+        viewclass: 'Button'
+
+        RecycleBoxLayout:
+            default_size: None, dp(56)
+            default_size_hint: 1, None
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: 'vertical'
+
+
+
+

@@ -1,0 +1,17 @@
+<PLabel@Label>:
+    font_size: 32
+
+<InfoScreen>:
+    orientation: 'vertical'
+
+    Button:
+        text: 'Refresh'
+        font_size: 32
+        on_release: root.refresh()
+
+    BoxLayout:
+        orientation: 'horizontal'
+        PLabel:
+            text: 'Battery'
+        PLabel:
+            text: '0%'

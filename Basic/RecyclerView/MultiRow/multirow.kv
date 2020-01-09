@@ -1,0 +1,30 @@
+<ItemRow>:
+    Label:
+        id: first_name
+        text: root.firstname
+        font_size: 32
+
+    Label:
+        id: middle_name
+        text: root.middlename
+        font_size: 32
+
+    Label:
+        id: last_name
+        text: root.lastname
+        font_size: 32
+
+<MainScreen>:
+    orientation: 'vertical'
+    Label:
+        text: 'Multi-Row Name List'
+        font_size: 42
+
+    NameList:
+        viewclass: 'ItemRow'
+        RecycleBoxLayout:
+            default_size: None, dp(56)
+            default_size_hint: 1, None
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: 'vertical'

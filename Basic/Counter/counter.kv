@@ -1,0 +1,17 @@
+<AppRootLayout>
+    orientation: 'vertical'
+    Label:
+        id: counter
+        text: '0'
+        font_size: 64
+    BoxLayout:
+        orientation: 'horizontal'
+        Button:
+            text: '+'
+            font_size: 32
+            on_release: {root.modify_counter(1), root.print(self.text)}
+
+        Button:
+            text: '-'
+            font_size: 32
+            on_release: root.modify_counter(-1)
