@@ -1,0 +1,32 @@
+<MainScreen>:
+    orientation: 'vertical'
+
+    keyword_text_input: keyword
+    searched_list: searched_list
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, 0.063
+
+        TextInput:
+            id: keyword
+            size_hint: 1, 1
+            font_size: 16
+            hint_text: 'Title'
+
+        Button:
+            text: 'Search'
+            size_hint: 0.2, 1
+            on_press: root.search()
+            background_color: 1, 0.88, 0.99, 1
+
+    SearchedList:
+        id: searched_list
+        viewclass: 'Button'
+
+        RecycleBoxLayout:
+            default_size: None, dp(56)
+            default_size_hint: 1, None
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: 'vertical'

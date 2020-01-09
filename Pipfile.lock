@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a3b261ecf4808193070d7890ce7a1f3341646c8c5b55e0dabbd3bf0721acaf30"
+            "sha256": "9c84f79a264c4f59873154e072716df07cda0ca7ac0dfcb5aeb29a3e1561241b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,6 +16,15 @@
         ]
     },
     "default": {
+        "beautifulsoup4": {
+            "hashes": [
+                "sha256:05fd825eb01c290877657a56df4c6e4c311b3965bda790c613a3d6fb01a5462a",
+                "sha256:9fbb4d6e48ecd30bcacc5b63b94088192dcda178513b2ae3c394229f8911b887",
+                "sha256:e1505eeed31b0f4ce2dbb3bc8eb256c04cc2b3b72af7d551a4ab6efd5cbe5dae"
+            ],
+            "index": "pypi",
+            "version": "==4.8.2"
+        },
         "certifi": {
             "hashes": [
                 "sha256:017c25db2a153ce562900032d5bc68e9f191e44e9a0f762f373977de9df1fbb3",
@@ -41,7 +50,7 @@
         },
         "ft-wescrape": {
             "editable": true,
-            "path": "C:/Studio/Python/Projects/WeScrape/src/main"
+            "path": "C:/Studio/Python/Projects/WeScrape"
         },
         "idna": {
             "hashes": [
@@ -148,6 +157,13 @@
             ],
             "index": "pypi",
             "version": "==2.22.0"
+        },
+        "soupsieve": {
+            "hashes": [
+                "sha256:bdb0d917b03a1369ce964056fc195cfdff8819c40de04695a80bc813c3cfa1f5",
+                "sha256:e2c1c5dee4a1c36bcb790e0fabd5492d874b8ebd4617622c4f6a731701060dda"
+            ],
+            "version": "==1.9.5"
         },
         "urllib3": {
             "hashes": [
