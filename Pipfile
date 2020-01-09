@@ -15,6 +15,7 @@ kivy = "==1.11.1"
 requests = "*"
 ft-wescrape = {editable = true,path = "C:/Studio/Python/Projects/WeScrape"}
 beautifulsoup4 = "*"
+webbrowser = "*"
 
 [requires]
 python_version = "3.6"

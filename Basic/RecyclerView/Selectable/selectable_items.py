@@ -29,6 +29,7 @@ class SelectableItem(RecycleDataViewBehavior, BoxLayout):
 
     def on_touch_down(self, touch):
         ''' Add selection on touch down '''
+        print(self.title)
         if super(SelectableItem, self).on_touch_down(touch):
             return True
         if self.collide_point(*touch.pos) and self.selectable:

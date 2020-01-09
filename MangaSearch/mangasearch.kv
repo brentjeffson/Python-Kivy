@@ -1,3 +1,6 @@
+<MangaItemButton>:
+    size_hint: 1, 1
+
 <MainScreen>:
     orientation: 'vertical'
 
@@ -22,9 +25,9 @@
 
     SearchedList:
         id: searched_list
-        viewclass: 'Button'
+        viewclass: 'MangaItemButton'
 
-        RecycleBoxLayout:
+        SelectableRecycleBoxLayout:
             default_size: None, dp(56)
             default_size_hint: 1, None
             size_hint_y: None
