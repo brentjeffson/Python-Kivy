@@ -1,7 +1,42 @@
 <MangaItemButton>:
     size_hint: 1, 1
 
-<MainScreen>:
+<InfoPage>:
+    orientation: 'vertical'
+    title_label: title_label
+    chapter_list: chapter_list
+    home_btn: home_btn
+
+    BoxLayout:
+        orientaion: 'horizontal'
+        size_hint: 1, 0.063
+
+        Button:
+            id: home_btn
+            size_hint: 0.2, 1
+            text: 'Home'
+            font_size: 36
+            on_press: root.home()
+
+        Label:
+            id: title_label
+            size_hint: 0.8, 1
+            text: "None"
+            font_size: 36
+
+    ChapterList:
+        id: chapter_list
+        viewclass: "Button"
+
+        RecycleBoxLayout:
+            default_size: None, dp(56)
+            default_size_hint: 1, None
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: 'vertical'
+
+
+<MainPage>:
     orientation: 'vertical'
 
     keyword_text_input: keyword
