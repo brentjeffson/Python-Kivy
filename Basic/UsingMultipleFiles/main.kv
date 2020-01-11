@@ -1,0 +1,54 @@
+<BottomNavigator>:
+    orientation: 'horizontal'
+    size_hint: 1, 0.05
+
+    lib_btn: lib_btn
+    search_btn: search_btn
+
+    Button:
+        id: lib_btn
+        text: 'Library'
+        font_size: 24
+        on_press: root.page('library')
+
+    Button:
+        id: search_btn
+        text: 'Search'
+        font_size: 24
+        on_press: root.page('search')
+
+<LibraryPage>:
+    orientation: 'vertical'
+
+    Label:
+        text: 'Library'
+        size_hint: 1, 0.8
+
+    BottomNavigator:
+
+<SearchPage>:
+    orientation: 'vertical'
+    keyword_input: keyword_input
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, 0.05
+
+        TextInput:
+            id: keyword_input
+            size_hint: 0.85, 1
+            hint_text: 'Search Title'
+
+        Button:
+            text: "Search"
+            size_hint: 0.15, 1
+            on_press: root.search()
+
+    Label:
+        text: 'Search'
+        size_hint: 1, 0.8
+
+    BottomNavigator:
+
+
+
