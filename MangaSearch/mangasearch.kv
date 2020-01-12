@@ -1,6 +1,3 @@
-<MangaItemButton>:
-    size_hint: 1, 1
-
 <InfoPage>:
     orientation: 'vertical'
     title_label: title_label
@@ -26,7 +23,7 @@
 
     ChapterList:
         id: chapter_list
-        viewclass: "Button"
+        viewclass: "ChapterItemButton"
 
         RecycleBoxLayout:
             default_size: None, dp(56)
@@ -35,6 +32,19 @@
             height: self.minimum_height
             orientation: 'vertical'
 
+<ImagePage>:
+    orientation: 'vertical'
+    image_list: image_list
+
+    ImageList:
+        id: image_list
+        viewclass: 'Image'
+        RecycleBoxLayout:
+            default_size: None, dp(56)
+            default_size_hint: 1, None
+            size_hint_y: None
+            height: self.minimum_height
+            orientation: 'vertical'
 
 <MainPage>:
     orientation: 'vertical'
@@ -50,6 +60,7 @@
             id: keyword
             size_hint: 1, 1
             font_size: 16
+            text: 'i became'
             hint_text: 'Title'
 
         Button:
@@ -62,7 +73,7 @@
         id: searched_list
         viewclass: 'MangaItemButton'
 
-        SelectableRecycleBoxLayout:
+        RecycleBoxLayout:
             default_size: None, dp(56)
             default_size_hint: 1, None
             size_hint_y: None
