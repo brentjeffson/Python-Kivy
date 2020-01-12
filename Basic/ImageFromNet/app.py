@@ -21,11 +21,11 @@ class MainPage(BoxLayout):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.load_image()
-        # t1 = threading.Thread(target=self.load_image, daemon=True)
-        # t1.start()
+        # self.load_image()
+        t1 = threading.Thread(target=self.load_image, daemon=True)
+        t1.start()
 
-    def image_ready(self, img_bytes):
+    def image_ready(self, img_bytes, _):
         image = CoreImage(io.BytesIO(img_bytes), ext="jpg")
         self.image.texture = image.texture
 
@@ -36,7 +36,8 @@ class MainPage(BoxLayout):
         split_url = url.split('/')
         filename = split_url[len(split_url)-1]
 
-        self.image_ready(resp.content)
+        # self.image_ready(resp.content)
+        Clock.schedule_once(partial(self.image_ready, resp.content), 0)
 
 
 class MainApp(App):
