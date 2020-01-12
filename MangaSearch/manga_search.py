@@ -1,3 +1,7 @@
+import io
+from functools import partial
+import concurrent.futures
+
 import requests
 import threading
 from kivy.app import App
@@ -11,6 +15,7 @@ from kivy.uix.recycleview import RecycleView
 from kivy.uix.recycleview.layout import LayoutSelectionBehavior
 from kivy.uix.recycleview.views import RecycleDataViewBehavior
 from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.core.image import Image as CoreImage
 from manga.constants import Sources
 from manga.manga import MangaScraper
 
@@ -27,7 +32,7 @@ class ChapterItemButton(RecycleDataViewBehavior, Button):
 
     def on_press(self):
         print(f"Opening {self.text}")
-        threading.Thread(target=app.image_page.load_images, args=[self.chapter], daemon=True).start()
+        threading.Thread(target=app.image_page.retrieve_images, args=[self.chapter], daemon=True).start()
         app.screen_manager.current = "Chapter"
 
 
@@ -55,17 +60,31 @@ class ImagePage(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-    def load_images(self, chapter):
+    def retrieve_images(self, chapter):
         resp = requests.get(chapter.url)
         if resp.ok:
             markup = resp.text
 
-            list_of_dict_urls = []
+            list_dict_img_bytes = []
             image_urls = MangaScraper.find_images(markup, Sources.MANGAKAKALOT)
-            for url in image_urls:
 
-                list_of_dict_urls.append({"source": url})
-            self.image_list.data = list_of_dict_urls
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                results = [executor.submit(self.retrieve_image, url) for url in image_urls]
+
+                for future in concurrent.futures.as_completed(results):
+                    print("Complete")
+                    Clock.schedule_once(partial(self.add_retrieved_image, future.result()[0], future.result()[1]), 0)
+
+    def retrieve_image(self, url):
+        split_url = url.split('/')
+        filename = split_url[len(split_url)-1]
+        resp = requests.get(url)
+        return resp.content, filename
+
+    def add_retrieved_image(self, image_byte, filename, *_):
+
+        texture = CoreImage(io.BytesIO(image_byte), ext=f"{filename.split('.')[1]}").texture
+        self.image_list.data.append({"texture": texture, "allow_stretch": True, "size": (600, 800)})
 
 
 class InfoPage(BoxLayout):
