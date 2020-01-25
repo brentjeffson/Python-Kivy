@@ -3,15 +3,38 @@
 
 <InfoScreen>:
     orientation: 'vertical'
-
-    Button:
-        text: 'Refresh'
-        font_size: 32
-        on_release: root.refresh()
-
+    
     BoxLayout:
         orientation: 'horizontal'
         PLabel:
             text: 'Battery'
         PLabel:
-            text: '0%'
+            text: root.battery_percentage
+
+    BoxLayout:
+        orientation: 'horizontal'
+        PLabel:
+            text: 'Upload/s'
+        PLabel:
+            text: root.upload_rate
+
+    BoxLayout:
+        orientation: 'horizontal'
+        PLabel:
+            text: 'Download/s'
+        PLabel:
+            text: root.download_rate
+
+    BoxLayout:
+        orientation: 'horizontal'
+        PLabel:
+            text: 'Uploaded'
+        PLabel:
+            text: root.uploaded
+    
+    BoxLayout:
+        orientation: 'horizontal'
+        PLabel:
+            text: 'Downloaded'
+        PLabel:
+            text: root.downloaded
