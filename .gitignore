@@ -1,2 +1,6 @@
 .idea
+.vscode
+Packaging
+*.lock
+Pipfile.lock
 __pycache__
