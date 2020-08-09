@@ -1,11 +1,10 @@
 from kivy.properties import Clock
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
-import win32.win32gui as win32gui
-
-
+import win32gui, win32con
 
 WINDOW_TITLE = 'AlwaysOnTop' 
+
 
 class MainApp(App):
 
